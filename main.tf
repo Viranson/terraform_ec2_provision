@@ -13,7 +13,7 @@ data "aws_eip" "staging_eip" {
 module "staging_security_group" {
   source        = "./modules/aws_security_group"
   for_each      = var.vpc_sg_profile
-  vpc_id        = module.data.aws_vpc.prod_vpc.id
+  vpc_id        = data.aws_vpc.prod_vpc.id
   vpc_sg_name   = each.value.vpc_sg_name
   description   = each.value.description
   ingress_rules = each.value.ingress_rules

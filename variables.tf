@@ -56,10 +56,10 @@ variable "ec2_instance_profile" {
   description = "AWS EC2 Instance Resource variables"
 }
 
-variable "vpc_staging_eip_profile" {
-  # type        = map(any)
-  description = "AWS EIP variables"
-}
+# variable "vpc_staging_eip_profile" {
+#   # type        = map(any)
+#   description = "AWS EIP variables"
+# }
 
 variable "vpc_staging_eip_association" {
   # type        = map(any)
