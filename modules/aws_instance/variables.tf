@@ -33,7 +33,7 @@ variable "security_group_ids" {
   description = "List of security group names to associate with"
 }
 
-variable "qwikapp_ec2_instance_tags" {
+variable "ec2_instance_tags" {
   type        = map(any)
   description = "Tags to assign to EC2 Instance Ressource"
 }

@@ -5,12 +5,13 @@ secret_key       = ""
 region           = "eu-west-3"
 ami              = "ami-0dfb6769e523bf035"
 instance_type    = "t2_micro"
-vpc-id           = ""
+vpc_id           = ""
 public_subnet_id = ""
+staging_eip_id   = ""
 
 vpc_sg_profile = {
-  staging-qwikapp-vpc-sg = {
-    vpc_sg_name = "staging_qwikapp_sg"
+  staging-vpc-sg = {
+    vpc_sg_name = "staging_sg"
     description = "Allow HTTP & HTTPS"
     ingress_rules = {
       allow_http_from_anywhere = {
@@ -41,30 +42,37 @@ vpc_sg_profile = {
       }
     }
     tags = {
-      Name = "staging-qwikapp-sg"
+      Name = "staging-sg"
     }
   }
 }
 
 ec2_instance_profile = {
-  staging-ec2-qwikapp-host = {
+  staging-ec2-host = {
     instance_type = "t2.micro"
-    key_name      = "staging-qwikapp-host-key"
+    key_name      = "staging-host-key"
     subnet_name   = "public-us-east-1a"
-    vpc_sg_name   = "staging-qwikapp-vpc-sg"
+    vpc_sg_name   = "staging-vpc-sg"
     tags = {
-      Name = "staging-ec2-qwikapp-host"
+      Name = "staging-ec2-host"
     }
   }
 }
 
-vpc_staging_eip_profile = {
-  staging-vpc01-natgw_eip_01 = {
+# vpc_staging_eip_profile = {
+#   staging-vpc01-natgw_eip_01 = {
+#     vpc_name      = "staging-vpc01"
+#     instance_name = "staging-ec2-host"
+#     vpc           = true
+#     tags = {
+#       Name = "staging-instance-eip"
+#     }
+#   }
+# }
+
+vpc_staging_eip_association = {
+  staging-eip-assoc = {
     vpc_name      = "staging-vpc01"
-    instance_name = "staging-ec2-qwikapp-host"
-    vpc           = true
-    tags = {
-      Name = "staging-qwikapp-instance-eip"
-    }
+    instance_name = "staging-ec2-host"
   }
 }

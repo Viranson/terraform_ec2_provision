@@ -1,4 +1,4 @@
-resource "aws_instance" "qwikapp_ec2_instance" {
+resource "aws_instance" "ec2_instance" {
   ami           = var.ec2_ami
   instance_type = var.instance_type
   user_data     = var.user_data

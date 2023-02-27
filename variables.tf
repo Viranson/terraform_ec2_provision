@@ -33,6 +33,15 @@ variable "secret_key" {
 variable "vpc_id" {
   type = string
 }
+
+variable "staging_eip_id" {
+  type = string
+}
+
+variable "ami" {
+  type = string
+}
+
 variable "public_subnet_id" {
   type = string
 }
@@ -50,4 +59,9 @@ variable "ec2_instance_profile" {
 variable "vpc_staging_eip_profile" {
   # type        = map(any)
   description = "AWS EIP variables"
+}
+
+variable "vpc_staging_eip_association" {
+  # type        = map(any)
+  description = "AWS EIP Association variables"
 }
